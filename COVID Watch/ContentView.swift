@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var covidData = CovidData()
+    @StateObject var newsData = NewsData()
+    
+    @AppStorage("favoriteState") var favoriteState = "ME"
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabBarView(covidData: covidData, newsData: newsData)
     }
 }
 
@@ -19,3 +23,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+let screen = UIScreen.main.bounds
